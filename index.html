@@ -1,105 +1,277 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feijoada da Tonha</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../Site-do-cliente-Feijoada da tonha/css/style.css">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feijoada da Tonha</title>
+
+<!-- Fonte moderna -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Montserrat', sans-serif;
+scroll-behavior:smooth;
+}
+
+/* BODY */
+body{
+background: linear-gradient(180deg,#fff7ed,#ffe6cc);
+color:#333;
+line-height:1.6;
+}
+
+/* MENU FIXO */
+nav{
+background: rgba(122,31,31,0.95);
+padding:15px 0;
+text-align:center;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+nav a{
+color:white;
+margin:0 20px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#ffd699;
+transform:scale(1.05);
+}
+
+/* TOPO - HERO */
+.topo{
+background: url('img/hero.jpg') center/cover no-repeat;
+height: 80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:rgb(122,31,31,0.95);
+text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.topo h1{
+font-size:55px;
+margin-bottom:15px;
+}
+
+.topo p{
+font-size:22px;
+opacity:0.9;
+}
+
+/* SEÇÕES */
+section{
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+position: relative;
+}
+
+/* TITULOS */
+h2{
+color:#7a1f1f;
+margin-bottom:30px;
+font-size:32px;
+border-left:6px solid #b83232;
+padding-left:15px;
+position:relative;
+}
+
+h2::after{
+content:'';
+width:50px;
+height:4px;
+background:#b83232;
+position:absolute;
+bottom:-10px;
+left:0;
+border-radius:2px;
+}
+
+/* IMAGENS */
+img{
+max-width:100%;
+border-radius:15px;
+margin:20px 0;
+transition:0.3s;
+}
+
+img:hover{
+transform: scale(1.05);
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* GALERIA */
+.galeria{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+/* CARDÁPIO */
+.cardapio{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.prato{
+background: linear-gradient(135deg,#ffe6cc,#fff7ed);
+padding:25px;
+border-radius:15px;
+box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+text-align:center;
+transition:0.3s;
+}
+
+.prato:hover{
+transform: translateY(-5px);
+box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+.prato h3{
+color:#b83232;
+margin-bottom:10px;
+font-size:22px;
+}
+
+/* LISTAS */
+ul{
+margin-left:20px;
+}
+
+ul li{
+margin-bottom:12px;
+font-weight:500;
+font-size:18px;
+}
+
+/* CONTATO */
+.contato{
+background:white;
+padding:40px;
+border-radius:15px;
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+/* BOTÃO WHATSAPP */
+.botao-whatsapp{
+display:inline-block;
+margin-top:25px;
+background:#781c1cf4;
+color:white;
+padding:15px 25px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+font-size:18px;
+transition:0.3s;
+}
+
+.botao-whatsapp:hover{
+background:#8b1f1ff5;
+transform:scale(1.05);
+}
+
+/* RODAPÉ */
+footer{
+background:#781c1cf4;
+color:white;
+text-align:center;
+padding:25px;
+font-size:16px;
+letter-spacing:0.5px;
+}
+
+@media(max-width:768px){
+.topo h1{
+font-size:40px;
+}
+.topo p{
+font-size:18px;
+}
+nav a{
+margin:0 12px;
+font-size:14px;
+}
+}
+</style>
+
 </head>
+
 <body>
 
-    <!-- TOPO -->
-    <header class="topo">
-        <h1>Feijoada da Tonha</h1>
-        <p>O tempero caseiro que conquista de verdade.</p>
-    </header>
+<!-- MENU -->
+<nav>
+<a href="#historia">História</a>
+<a href="#cardapio">Cardápio</a>
+<a href="#horario">Horário</a>
+<a href="#contato">Contato</a>
+</nav>
 
-    <!-- APRESENTAÇÃO -->
-    <section class="apresentacao">
-        <h2>🍲 Feijoada da Tonha</h2>
-        <p>
-            Em um cantinho simples da cidade, Dona Tonha realizou seu sonho e abriu o restaurante Feijoada da Tonha,
-            levando adiante a receita de família que aprendeu na infância.
-        </p>
-        <p>
-            Com feijoada caseira, ambiente acolhedor e atendimento cheio de carinho, o lugar virou ponto de encontro da comunidade.
-        </p>
-        <p>
-            Porque, para Dona Tonha, feijoada boa não é só a que enche a barriga — é a que aquece o coração.
-        </p>
-    </section>
+<!-- HERO -->
+<div class="topo">
+<h1>Feijoada da Tonha</h1>
+<p>O tempero caseiro que conquista de verdade</p>
+</div>
 
-    <!-- IMAGEM PRINCIPAL -->
-    <section class="imagem">
-        <img src="../Site-do-cliente-Feijoada da tonha/img/feijoada_1.jpg" alt="Feijoada">
-    </section>
+<!-- HISTÓRIA -->
+<section id="historia">
+<h2>Nossa História</h2>
+<p>Em um cantinho simples da cidade, Dona Antônia realizou seu sonho e abriu o restaurante <b>Feijoada da Tonha</b>.</p>
+<p>Com receitas de família, comida feita com carinho e atendimento acolhedor, o restaurante virou ponto de encontro da comunidade.</p>
+<img src="img/feijoada_1.jpg" alt="Feijoada">
+</section>
 
-    <!-- GALERIA -->
-    <section class="galeria">
-        <img src="../Site-do-cliente-Feijoada da tonha/img/eb7302890df3d8983c0fcc8785cb9edb.jpg" alt="Prato de feijoada">
-    </section>
 
-    <!-- SOBRE -->
-    <section class="sobre">
-        <p><strong>Restaurante:</strong> pequeno e acolhedor especializado em feijoada tradicional brasileira.</p>
+<!-- CARDÁPIO -->
+<section id="cardapio">
+<h2>🍛 Cardápio - Pratos Típicos</h2>
+<div class="cardapio">
+<div class="prato"><h3>Feijoada Completa</h3><p>Feijão Gordo, Arroz, Couve, Bisteca, Farofa, Torresmo, Banana Empanada e Molho de Pimenta.</p></div>
+<div class="prato"><h3>Feijoada Light</h3><p>Feijão Light com Linguiça, Arroz, Couve, Bisteca, Farofa, Banana Empanada e Molho de Pimenta, C/ ou S/ Torresmo.</p></div>
+<div class="prato"><h3>Feijoada Individual</h3><p>Porção Individual de Feijoada completa para viagem.</p></div>
+</div>
+</section>
 
-        <p><strong>Público:</strong> Famílias, trabalhadores e amigos.</p>
+<!-- HORÁRIO -->
+<section id="horario">
+<h2>🕒 Horário de Funcionamento</h2>
+<ul>
+<li> Sábado: 11h às 15h</li>
 
-        <p><strong>Diferencial:</strong> Sabor caseiro, atendimento familiar e preço justo.</p>
+</ul>
+</section>
 
-        <p><strong>Modelo:</strong> Pratos individuais, dias especiais de feijoada e encomendas.</p>
-    </section>
+<!-- CONTATO -->
+<section id="contato" class="contato">
+<h2>📱 Contato</h2>
+<p><b>Telefone:</b> (55) 11994600556</p>
+<p><b>Instagram:</b> @feijoadadatonha</p>
+<p><b>Endereço:</b> Rua Enaura Maria Da Conceição-249</p>
+<a class="botao-whatsapp" href="https://wa.me/11994600556?text=Olá%20quero%20fazer%20um%20pedido%20na%20Feijoada%20da%20Tonha">Pedir pelo WhatsApp</a>
+</section>
 
-    <!-- PRODUTOS E SERVIÇOS -->
-    <section class="produtos">
-        <h2>🛍️ Produtos</h2>
-        <ul>
-            <li>Feijoada tradicional completa</li>
-            <li>Feijoada por porção individual</li>
-            <li>Arroz, farofa, couve e laranja</li>
-            <li>Torresmo e vinagrete</li>
-            <li>Bebidas (refrigerantes, sucos e água)</li>
-            <li>Marmitas</li>
-            <li>Feijoada para eventos</li>
-        </ul>
-
-        <h2>🛎️ Serviços</h2>
-        <ul>
-            <li>Atendimento no local</li>
-            <li>Delivery</li>
-            <li>Encomendas para festas e confraternizações</li>
-            <li>Reserva de mesas</li>
-            <li>Atendimento personalizado</li>
-        </ul>
-    </section>
-
-    <!-- HORÁRIO -->
-    <section class="horario">
-        <h2>🕒 Horário de Funcionamento</h2>
-        <ul>
-            <li>Terça a Quinta: 11h às 15h</li>
-            <li>Sexta e Sábado: 11h às 16h (Dia Especial de Feijoada)</li>
-            <li>Domingo: 11h às 14h</li>
-            <li>Segunda-feira: Fechado</li>
-        </ul>
-
-        <p><strong>Observações:</strong></p>
-        <p>Encomendas aceitas todos os dias via WhatsApp.</p>
-        <p>Delivery disponível dentro do horário de funcionamento.</p>
-    </section>
-
-    <!-- CONTATO -->
-    <section class="contato">
-        <h2>📱 Contato</h2>
-
-        <p><strong>Telefone / WhatsApp:</strong> (00) 90000-0000</p>
-        <p><strong>Instagram:</strong> @feijoadadatonha</p>
-        <p><strong>Facebook:</strong> Feijoada da Tonha</p>
-        <p><strong>TikTok:</strong> @feijoadadatonha</p>
-        <p><strong>Endereço:</strong> Rua das Flores, 123 – Centro</p>
-    </section>
+<footer>
+<p>© 2026 Feijoada da Tonha</p>
+</footer>
 
 </body>
 </html>
