@@ -1,269 +1,201 @@
-/* RESET */
+<script>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Montserrat',sans-serif;
-scroll-behavior:smooth;
+/* LOGIN */
+
+function login(){
+
+const usuario =
+document.getElementById("usuario").value
+
+const senha =
+document.getElementById("senha").value
+
+if(usuario === "admin" && senha === "1234"){
+
+localStorage.setItem("logado","sim")
+
+document.getElementById("status-login")
+.innerHTML =
+"✅ Login realizado com sucesso"
+
+document.getElementById("login")
+.style.display = "none"
+
+document.getElementById("site")
+.style.display = "block"
+
+}else{
+
+document.getElementById("status-login")
+.innerHTML =
+"❌ Usuário ou senha inválidos"
+
 }
 
-/* BODY */
-
-body{
-background:linear-gradient(180deg,#fff7ed,#ffe6cc);
-color:#333;
-line-height:1.6;
 }
 
-/* MENU */
+/* LOGIN AUTOMÁTICO */
 
-nav{
-background:rgba(122,31,31,0.95);
-padding:15px 0;
-text-align:center;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 4px 8px rgba(0,0,0,0.2);
-}
+if(localStorage.getItem("logado") === "sim"){
 
-nav a{
-display:inline-block;
-color:white;
-margin:0 20px;
-text-decoration:none;
-font-weight:600;
-transition:0.3s;
-}
+document.getElementById("login")
+.style.display = "none"
 
-nav a:hover{
-color:#ffd699;
-transform:scale(1.05);
-}
+document.getElementById("site")
+.style.display = "block"
 
-/* HERO */
-
-.topo{
-background:url('../img/hero.jpg') center/cover no-repeat;
-height:80vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:#7a1f1f;
-text-shadow:0 4px 10px rgba(0,0,0,0.6);
-}
-
-.topo h1{
-font-size:55px;
-margin-bottom:15px;
-}
-
-.topo p{
-font-size:22px;
-}
-
-/* SEÇÕES */
-
-section{
-max-width:1100px;
-margin:auto;
-padding:60px 20px;
-}
-
-/* TÍTULOS */
-
-h2{
-color:#7a1f1f;
-margin-bottom:30px;
-font-size:32px;
-border-left:6px solid #b83232;
-padding-left:15px;
-}
-
-/* CARROSSEL */
-
-.slideshow-container{
-max-width:1000px;
-position:relative;
-margin:40px auto;
-}
-
-.slide{
-display:none;
-}
-
-.slide img{
-width:100%;
-height:500px;
-object-fit:cover;
-border-radius:15px;
-}
-
-.prev,
-.next{
-cursor:pointer;
-position:absolute;
-top:50%;
-padding:16px;
-margin-top:-22px;
-color:white;
-font-weight:bold;
-font-size:22px;
-transition:0.3s;
-background:rgba(0,0,0,0.4);
-}
-
-.next{
-right:0;
-}
-
-.prev:hover,
-.next:hover{
-background:rgba(0,0,0,0.8);
-}
-
-.dot{
-cursor:pointer;
-height:15px;
-width:15px;
-margin:0 4px;
-background:#bbb;
-border-radius:50%;
-display:inline-block;
-transition:0.3s;
-}
-
-.active,
-.dot:hover{
-background:#7a1f1f;
-}
-
-.fade{
-animation:fade 1s;
-}
-
-@keyframes fade{
-from{opacity:.4}
-to{opacity:1}
-}
-
-/* IMAGENS */
-
-img{
-max-width:100%;
-border-radius:15px;
-margin:20px 0;
-}
-
-/* CARDÁPIO */
-
-.cardapio{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.prato{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 6px 20px rgba(0,0,0,0.2);
-text-align:center;
-}
-
-/* CONTATO */
-
-.contato{
-background:white;
-padding:40px;
-border-radius:15px;
-box-shadow:0 8px 25px rgba(0,0,0,0.2);
-text-align:center;
-}
-
-/* BOTÕES */
-
-button,
-.botao-whatsapp{
-display:inline-block;
-margin-top:20px;
-background:#781c1cf4;
-color:white;
-padding:15px 25px;
-border:none;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover,
-.botao-whatsapp:hover{
-background:#8b1f1ff5;
-transform:scale(1.05);
-}
-
-/* INPUT */
-
-input{
-width:100%;
-padding:14px;
-margin-top:15px;
-border-radius:10px;
-border:1px solid #ccc;
 }
 
 /* CARRINHO */
 
-#lista-carrinho{
-list-style:none;
-margin-top:20px;
-}
+let carrinho = []
 
-#lista-carrinho li{
-padding:10px;
-border-bottom:1px solid #ddd;
-}
+function adicionarCarrinho(nome,preco){
 
-/* LOGIN */
+carrinho.push({
+nome,
+preco
+})
 
-#site{
-display:none;
-}
-
-/* RODAPÉ */
-
-footer{
-background:#781c1cf4;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:40px;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-.topo h1{
-font-size:40px;
-}
-
-.topo p{
-font-size:18px;
-}
-
-.slide img{
-height:300px;
-}
-
-nav a{
-margin:0 10px;
-font-size:14px;
-}
+renderizarCarrinho()
 
 }
+
+function renderizarCarrinho(){
+
+const lista =
+document.getElementById("lista-carrinho")
+
+const total =
+document.getElementById("total")
+
+lista.innerHTML = ""
+
+let soma = 0
+
+carrinho.forEach((item,index)=>{
+
+soma += item.preco
+
+lista.innerHTML += `
+
+<li>
+
+${item.nome} - R$ ${item.preco.toFixed(2)}
+
+<button onclick="removerItem(${index})">
+
+❌
+
+</button>
+
+</li>
+
+`
+
+})
+
+total.innerHTML =
+`Total: R$ ${soma.toFixed(2)}`
+
+}
+
+function removerItem(index){
+
+carrinho.splice(index,1)
+
+renderizarCarrinho()
+
+}
+
+function finalizarPedido(){
+
+if(carrinho.length === 0){
+
+alert("Seu carrinho está vazio!")
+
+return
+
+}
+
+let mensagem =
+"Olá, quero fazer o seguinte pedido:%0A%0A"
+
+let total = 0
+
+carrinho.forEach(item=>{
+
+mensagem +=
+`- ${item.nome} | R$ ${item.preco.toFixed(2)}%0A`
+
+total += item.preco
+
+})
+
+mensagem +=
+`%0ATotal: R$ ${total.toFixed(2)}`
+
+window.open(
+`https://wa.me/5511994600556?text=${mensagem}`,
+"_blank"
+)
+
+}
+
+/* CARROSSEL */
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Botões
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+// Bolinhas
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+
+    let i;
+
+    let slides =
+    document.getElementsByClassName("slide");
+
+    let dots =
+    document.getElementsByClassName("dot");
+
+    if (n > slides.length) {
+        slideIndex = 1
+    }
+
+    if (n < 1) {
+        slideIndex = slides.length
+    }
+
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className =
+        dots[i].className.replace(" active", "");
+    }
+
+    slides[slideIndex-1].style.display = "block";
+
+    dots[slideIndex-1].className += " active";
+}
+
+// Automático
+setInterval(() => {
+
+    slideIndex++;
+
+    showSlides(slideIndex);
+
+}, 5000);
+
+</script>
