@@ -135,6 +135,47 @@
 
 </div>
 
+<!-- DADOS DO CLIENTE -->
+
+<div class="dados-cliente">
+
+    <h2>
+        📍 Dados para Entrega
+    </h2>
+
+    <input
+        type="text"
+        id="nome-cliente"
+        placeholder="Seu nome">
+
+    <input
+        type="text"
+        id="telefone-cliente"
+        placeholder="Seu telefone">
+
+    <input
+        type="text"
+        id="endereco-cliente"
+        placeholder="Rua e número">
+
+    <input
+        type="text"
+        id="bairro-cliente"
+        placeholder="Bairro">
+
+    <div
+        class="tempo-entrega"
+        id="tempo-entrega">
+
+        ⏰ Tempo estimado:
+        30 minutos
+
+    </div>
+
+</div>
+
+<!-- CARRINHO -->
+
 <div class="carrinho">
 
     <h2>
@@ -214,7 +255,6 @@ function pedir(botao) {
 
     atualizarCarrinho()
 
-    // limpa os checkbox
     checks.forEach(function(check) {
 
         check.checked = false
@@ -297,8 +337,102 @@ function finalizarPedido() {
         return
     }
 
+    let nomeCliente =
+        document.getElementById(
+            "nome-cliente"
+        ).value
+
+    let telefoneCliente =
+        document.getElementById(
+            "telefone-cliente"
+        ).value
+
+    let enderecoCliente =
+        document.getElementById(
+            "endereco-cliente"
+        ).value
+
+    let bairroCliente =
+        document.getElementById(
+            "bairro-cliente"
+        ).value
+
+    if (
+        nomeCliente == "" ||
+        telefoneCliente == "" ||
+        enderecoCliente == "" ||
+        bairroCliente == ""
+    ) {
+
+        alert(
+            "Preencha todos os dados da entrega"
+        )
+
+        return
+    }
+
+    let tempoEntrega = 30
+
+    if (pedidos.length >= 3) {
+
+        tempoEntrega = 40
+    }
+
+    if (pedidos.length >= 5) {
+
+        tempoEntrega = 50
+    }
+
+    document.getElementById(
+        "tempo-entrega"
+    ).innerText =
+
+        "⏰ Tempo estimado: " +
+        tempoEntrega +
+        " minutos"
+
+    localStorage.setItem(
+        "nomeCliente",
+        nomeCliente
+    )
+
+    localStorage.setItem(
+        "telefoneCliente",
+        telefoneCliente
+    )
+
+    localStorage.setItem(
+        "enderecoCliente",
+        enderecoCliente
+    )
+
+    localStorage.setItem(
+        "bairroCliente",
+        bairroCliente
+    )
+
     let mensagem =
         "🍇 PEDIDO - AÇAYOU 🍇\n\n"
+
+    mensagem +=
+        "👤 Cliente: " +
+        nomeCliente +
+        "\n"
+
+    mensagem +=
+        "📞 Telefone: " +
+        telefoneCliente +
+        "\n"
+
+    mensagem +=
+        "📍 Endereço: " +
+        enderecoCliente +
+        "\n"
+
+    mensagem +=
+        "🏘️ Bairro: " +
+        bairroCliente +
+        "\n\n"
 
     pedidos.forEach(function(pedido) {
 
@@ -332,7 +466,13 @@ function finalizarPedido() {
 
     mensagem +=
         "🛒 TOTAL: R$ " +
-        totalGeral.toFixed(2)
+        totalGeral.toFixed(2) +
+        "\n\n"
+
+    mensagem +=
+        "⏰ Tempo estimado: " +
+        tempoEntrega +
+        " minutos"
 
     let numero =
         "5511954989143"
@@ -346,6 +486,40 @@ function finalizarPedido() {
 
     window.open(link)
 }
+
+/* SALVAR DADOS */
+
+document.getElementById(
+    "nome-cliente"
+).value =
+
+localStorage.getItem(
+    "nomeCliente"
+) || ""
+
+document.getElementById(
+    "telefone-cliente"
+).value =
+
+localStorage.getItem(
+    "telefoneCliente"
+) || ""
+
+document.getElementById(
+    "endereco-cliente"
+).value =
+
+localStorage.getItem(
+    "enderecoCliente"
+) || ""
+
+document.getElementById(
+    "bairro-cliente"
+).value =
+
+localStorage.getItem(
+    "bairroCliente"
+) || ""
 
 </script>
 
