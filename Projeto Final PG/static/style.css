@@ -1,0 +1,145 @@
+body {
+
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    background-color: #4b0055;
+    color: white;
+}
+
+header {
+
+    background-color: #69007a;
+    padding: 30px;
+    text-align: center;
+}
+
+.banner {
+
+    text-align: center;
+    padding: 40px;
+
+    background: linear-gradient(
+        90deg,
+        #7b00a8,
+        #aa00ff
+    );
+}
+
+.titulo {
+
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cards {
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+
+    margin-right: 320px;
+}
+
+.card {
+
+    background-color: #7f1791;
+    width: 260px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.card:hover {
+
+    transform: scale(1.03);
+}
+
+.card img {
+
+    width: 100%;
+    border-radius: 10px;
+}
+
+.preco {
+
+    color: #00ff95;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+button {
+
+    background-color: #00d084;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+button:hover {
+
+    opacity: 0.8;
+}
+
+.adicionais {
+
+    text-align: left;
+    margin-top: 15px;
+}
+
+.adicionais label {
+
+    display: block;
+    margin-top: 8px;
+}
+
+.carrinho {
+
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    width: 300px;
+    height: 100%;
+
+    background-color: #2b0030;
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+.item-carrinho {
+
+    background-color: #4d0055;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    margin-top: 10px;
+}
+
+@media(max-width: 900px) {
+
+    .cards {
+
+        margin-right: 0;
+    }
+
+    .carrinho {
+
+        position: relative;
+
+        width: auto;
+
+        height: auto;
+    }
+}
